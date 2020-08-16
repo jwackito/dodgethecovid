@@ -8,21 +8,43 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Person",
+"class": "Gendarme",
+"language": "GDScript",
+"path": "res://Gendarme.gd"
+}, {
+"base": "Node",
+"class": "LevelOne",
+"language": "GDScript",
+"path": "res://LevelOne.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Person",
+"language": "GDScript",
+"path": "res://Person.gd"
+}, {
+"base": "Person",
+"class": "PersonWithMask",
+"language": "GDScript",
+"path": "res://PersonWithMask.gd"
+} ]
 _global_script_class_icons={
-
+"Gendarme": "",
+"LevelOne": "",
+"Person": "",
+"PersonWithMask": ""
 }
 
 [application]
 
 config/name="Dodge The Creeps"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://LevelOne.tscn"
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=480
-window/size/height=720
+window/size/width=800
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
