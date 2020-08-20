@@ -1,37 +1,35 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/LevelOne.gd" type="Script" id=1]
 [ext_resource path="res://scenes/PersonWithMask.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/StaticRock.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Gendarme.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/PersonWithoutMask.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/PersonVisiblySick.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -1.30595, 0.817566, 0, 0, 0, 0, 19.8833, -51.0961, 0, 0, 0, 0, 774.221, -38.3826, 0, 0, 0, 0, 799.648, -0.241913, 0, 0, 0, 0, 799.648, 600.474, 0, 0, 0, 0, 677.81, 699.004, 0, 0, 0, 0, 31.5374, 687.35, 0, 0, 0, 0, 1.87238, 600.474, 0, 0, 0, 0, -1.30595, 0.817566 )
+"points": PoolVector2Array( 0, 0, 0, 0, 21.3621, 47.4088, 0, 0, 0, 0, 38.4893, 21.7065, 0, 0, 0, 0, 716.327, 31.7859, 0, 0, 0, 0, 769.244, 36.8256, 0, 0, 0, 0, 772.021, 548.094, 0, 0, 0, 0, 700.749, 585.512, 0, 0, 0, 0, 62.8659, 580.166, 0, 0, 0, 0, 34.3571, 544.53, 0, 0, 0, 0, 21.3621, 47.4088 )
 }
 
 [node name="LevelOne" type="Node"]
 script = ExtResource( 1 )
 PersonWithMaskPackage = ExtResource( 2 )
+PersonWithoutMaskPackage = ExtResource( 6 )
+PersonVisiblySickPackage = ExtResource( 7 )
+GendarmePackage = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 138.79, 104.887 )
 
 [node name="SpawnEnemyTimer" type="Timer" parent="."]
 wait_time = 2.0
-
-[node name="WallContainer" type="Node" parent="."]
-
-[node name="StaticRock" parent="WallContainer" instance=ExtResource( 3 )]
-position = Vector2( 410.361, 365.287 )
-
-[node name="StaticRock2" parent="WallContainer" instance=ExtResource( 3 )]
-position = Vector2( 407.502, 239.947 )
-
-[node name="StaticRock3" parent="WallContainer" instance=ExtResource( 3 )]
-position = Vector2( 407.872, 301.995 )
 
 [node name="InitPersonPath" type="Path2D" parent="."]
 position = Vector2( -1.05948, 0 )
 curve = SubResource( 1 )
 
 [node name="InitPosition" type="PathFollow2D" parent="InitPersonPath"]
-position = Vector2( -1.30595, 0.817566 )
-rotation = -1.18327
+position = Vector2( 21.3621, 47.4088 )
+rotation = -0.983001
 [connection signal="timeout" from="SpawnEnemyTimer" to="." method="_on_SpawnEnemyTimer_timeout"]

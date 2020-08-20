@@ -2,9 +2,8 @@
 
 [ext_resource path="res://src/Person.gd" type="Script" id=1]
 
-[node name="Person" type="RigidBody2D"]
+[node name="Person" type="KinematicBody2D"]
 position = Vector2( 374, 104 )
-gravity_scale = 0.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

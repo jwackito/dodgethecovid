@@ -1,3 +1,4 @@
+class_name Player
 extends Area2D
 
 signal hit
@@ -6,6 +7,8 @@ var screen_size
 export var speed = 400
 export var life  = 100
 export var mask  = 0
+
+const Person = preload("Person.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,10 +46,13 @@ func _process(delta):
 		$AnimatedSprite.flip_h = false
 		$AnimatedSprite.flip_v = velocity.y > 0
 	
-func _on_Player_body_entered(_body):
+func _on_Player_body_entered(body):
+	if body is Person:
+		print("I've collided with ", body)
 	hide()
 	emit_signal("hit")
 	$CollisionShape2D.set_deferred("disabled", true)
+	queue_free()
 
 func start(pos):
 	position = pos

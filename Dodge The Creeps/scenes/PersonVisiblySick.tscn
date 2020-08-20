@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/Gendarme.gd" type="Script" id=1]
-[ext_resource path="res://assets/art/cannonball_small.png" type="Texture" id=2]
+[ext_resource path="res://src/PersonVisiblySick.gd" type="Script" id=1]
+[ext_resource path="res://assets/art/peach_visibly_sick.png" type="Texture" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -12,20 +12,20 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 30.8451
+radius = 31.3226
 
-[node name="Gendarme" type="KinematicBody2D"]
-position = Vector2( 190.363, 385.522 )
+[node name="PersonWithoutMask" type="KinematicBody2D"]
+position = Vector2( 197, 132 )
 collision_layer = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 collision_scale = Vector2( 1, 1 )
+damage = 85
 min_speed = 150
-max_speed = 200
-min_damage_variation = 0.8
-vision_range = 200
+max_speed = 250
+min_damage_variation = 0.6
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
