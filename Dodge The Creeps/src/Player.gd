@@ -1,4 +1,6 @@
+class_name Player
 extends Area2D
+
 
 signal hit
 var screen_size
@@ -47,6 +49,7 @@ func _on_Player_body_entered(_body):
 	hide()
 	emit_signal("hit")
 	$CollisionShape2D.set_deferred("disabled", true)
+	queue_free()
 
 func start(pos):
 	position = pos

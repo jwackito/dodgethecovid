@@ -1,8 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/PersonWithMask.gd" type="Script" id=1]
-[ext_resource path="res://assets/art/peach.png" type="Texture" id=2]
-
+[ext_resource path="res://assets/art/peach_with_mask.png" type="Texture" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -15,15 +14,15 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 31.3226
 
-[node name="PersonWithMask" type="RigidBody2D"]
+[node name="PersonWithMask" type="KinematicBody2D"]
 position = Vector2( 197, 132 )
 collision_layer = 0
-gravity_scale = 0.0
-can_sleep = false
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+collision_scale = Vector2( 1, 1 )
+damage = 35
 min_speed = 150
 max_speed = 250
 min_damage_variation = 0.8

@@ -9,31 +9,49 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
+"base": "Person",
 "class": "Gendarme",
 "language": "GDScript",
 "path": "res://src/Gendarme.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "LevelOne",
 "language": "GDScript",
 "path": "res://src/LevelOne.gd"
 }, {
-"base": "Reference",
+"base": "KinematicBody2D",
 "class": "Person",
 "language": "GDScript",
 "path": "res://src/Person.gd"
 }, {
-"base": "Reference",
+"base": "Person",
+"class": "PersonVisiblySick",
+"language": "GDScript",
+"path": "res://src/PersonVisiblySick.gd"
+}, {
+"base": "Person",
 "class": "PersonWithMask",
 "language": "GDScript",
 "path": "res://src/PersonWithMask.gd"
+}, {
+"base": "Reference",
+"class": "PersonWithoutMask",
+"language": "GDScript",
+"path": "res://src/PersonWithoutMask.gd"
+}, {
+"base": "Area2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/Player.gd"
 } ]
 _global_script_class_icons={
 "Gendarme": "",
 "LevelOne": "",
 "Person": "",
-"PersonWithMask": ""
+"PersonVisiblySick": "",
+"PersonWithMask": "",
+"PersonWithoutMask": "",
+"Player": ""
 }
 
 [application]
