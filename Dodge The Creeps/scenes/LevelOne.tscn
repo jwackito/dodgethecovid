@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/LevelOne.gd" type="Script" id=1]
 [ext_resource path="res://scenes/PersonWithMask.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/StaticRock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Gendarme.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/PersonWithoutMask.tscn" type="PackedScene" id=6]
@@ -25,17 +24,6 @@ position = Vector2( 138.79, 104.887 )
 
 [node name="SpawnEnemyTimer" type="Timer" parent="."]
 wait_time = 2.0
-
-[node name="WallContainer" type="Node" parent="."]
-
-[node name="StaticRock" parent="WallContainer" instance=ExtResource( 3 )]
-position = Vector2( 410.361, 365.287 )
-
-[node name="StaticRock2" parent="WallContainer" instance=ExtResource( 3 )]
-position = Vector2( 407.502, 239.947 )
-
-[node name="StaticRock3" parent="WallContainer" instance=ExtResource( 3 )]
-position = Vector2( 407.872, 301.995 )
 
 [node name="InitPersonPath" type="Path2D" parent="."]
 position = Vector2( -1.05948, 0 )

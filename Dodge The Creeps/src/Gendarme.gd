@@ -19,12 +19,9 @@ func init(new_position: Vector2, direction, _enemy: Node2D) -> Gendarme:
 	return self
 
 
-func _move(delta: float) -> void:
+func _process(delta: float):
 	if (_enemy_node and _enemy_node.is_inside_tree()):
-		var distance_vector: Vector2 = _enemy_node.position - self.position
-		if (distance_vector.length() < vision_range):
-			var movement: Vector2 = distance_vector.normalized() * speed * delta
-			var collision = move_and_collide(movement)
-			if collision:
-				var reflect: Vector2 = collision.remainder.bounce(collision.normal)
-				move_and_collide(reflect)
+		var distance: Vector2 = _enemy_node.position - self.position
+		if (distance.length() < vision_range):
+			velocity = distance.normalized() * speed
+	._move(delta)

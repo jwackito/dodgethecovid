@@ -22,7 +22,7 @@ func _init_person(new_position, direction):
 	velocity = Vector2(speed, 0).rotated(direction)
 
 
-func _physics_process(delta):
+func _person_process(delta):
 	if (velocity):
 		_move(delta)
 
