@@ -1,6 +1,8 @@
 class_name PersonVisiblySick
 extends Person
 
+export var coef = .85
+
 func _init() -> void:
 	default_sprite_name = "default"
 

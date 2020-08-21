@@ -2,7 +2,6 @@
 
 [ext_resource path="res://assets/art/cannonball_small.png" type="Texture" id=1]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],

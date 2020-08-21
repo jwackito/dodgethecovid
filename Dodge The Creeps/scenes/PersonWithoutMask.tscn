@@ -22,7 +22,6 @@ __meta__ = {
 "_edit_group_": true
 }
 collision_scale = Vector2( 1, 1 )
-damage = 55
 min_speed = 150
 max_speed = 250
 min_damage_variation = 0.6

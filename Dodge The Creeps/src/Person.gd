@@ -2,7 +2,7 @@ class_name Person
 extends KinematicBody2D
 
 export var collision_scale: Vector2
-export var damage: int
+export var damage: float
 export var min_speed: int
 export var max_speed: int
 export var min_damage_variation: float

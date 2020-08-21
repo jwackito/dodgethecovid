@@ -1,6 +1,8 @@
 class_name PersonWithoutMask
 extends Person
 
+export var coef = .5
+
 func _init() -> void:
 	default_sprite_name = "default"
 
