@@ -23,7 +23,7 @@ GendarmePackage = ExtResource( 5 )
 [node name="Interface" parent="." instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 138.79, 104.887 )
+position = Vector2( 257.711, 247.592 )
 
 [node name="SpawnEnemyTimer" type="Timer" parent="."]
 wait_time = 2.0
