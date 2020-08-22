@@ -1,4 +1,5 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
+
 
 [ext_resource path="res://src/LevelOne.gd" type="Script" id=1]
 [ext_resource path="res://scenes/PersonWithMask.tscn" type="PackedScene" id=2]
@@ -7,7 +8,14 @@
 [ext_resource path="res://scenes/Gendarme.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/PersonWithoutMask.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/PersonVisiblySick.tscn" type="PackedScene" id=7]
+
+[ext_resource path="res://scenes/Mask.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/HCQS.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/GelAlcohol.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/CDS.tscn" type="PackedScene" id=11]
+
 [ext_resource path="res://assets/art/bg.jpg" type="Texture" id=8]
+
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -20,6 +28,10 @@ PersonWithMaskPackage = ExtResource( 2 )
 PersonWithoutMaskPackage = ExtResource( 6 )
 PersonVisiblySickPackage = ExtResource( 7 )
 GendarmePackage = ExtResource( 5 )
+MaskPackage = ExtResource( 8 )
+CDSPackage = ExtResource( 11 )
+HCQSPackage = ExtResource( 9 )
+GelAlcoholPackage = ExtResource( 10 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
@@ -34,13 +46,21 @@ position = Vector2( 257.711, 247.592 )
 [node name="SpawnEnemyTimer" type="Timer" parent="LevelLayer"]
 wait_time = 2.0
 
-[node name="InitPersonPath" type="Path2D" parent="LevelLayer"]
+[node name="SpawnItemTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="InitPersonPath" type="Path2D" parent="."]
+
 position = Vector2( -1.05948, 0 )
 curve = SubResource( 1 )
 
 [node name="InitPosition" type="PathFollow2D" parent="LevelLayer/InitPersonPath"]
 position = Vector2( 21.3621, 47.4088 )
 rotation = -0.983001
+
+[connection signal="hit" from="Player" to="Interface" method="_on_Player_hit"]
+[connection signal="timeout" from="SpawnEnemyTimer" to="." method="_on_SpawnEnemyTimer_timeout"]
+[connection signal="timeout" from="SpawnItemTimer" to="." method="_on_SpawnItemTimer_timeout"]
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
