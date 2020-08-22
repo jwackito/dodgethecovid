@@ -1,6 +1,7 @@
 class_name Gendarme
 extends Person
 
+
 export var vision_range: int = 1000
 var _enemy_node: Node2D = null
 

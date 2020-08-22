@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Damagable",
+"language": "GDScript",
+"path": "res://src/Damagable.gd"
+}, {
 "base": "Person",
 "class": "Gendarme",
 "language": "GDScript",
@@ -45,6 +50,7 @@ _global_script_classes=[ {
 "path": "res://src/Player.gd"
 } ]
 _global_script_class_icons={
+"Damagable": "",
 "Gendarme": "",
 "LevelOne": "",
 "Person": "",

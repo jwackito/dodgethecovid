@@ -1,9 +1,13 @@
 class_name PersonVisiblySick
 extends Person
 
+const Damage = preload("res://src/Damagable.gd")
+var damage
+
 func _init() -> void:
 	default_sprite_name = "default"
-
+	self.damage = Damage.new(.85)
+	
 
 func _ready() -> void: 
 	_set_sprite_and_collision($AnimatedSprite, $Collision)

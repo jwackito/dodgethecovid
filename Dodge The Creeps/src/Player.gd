@@ -1,11 +1,11 @@
 class_name Player
 extends Area2D
 
-signal hit
+signal hit(covid, mask)
 var screen_size
 
 export var speed = 400
-export var life  = 100
+export var covid  = 0
 export var mask  = 0
 
 const Person = preload("Person.gd")
@@ -45,15 +45,21 @@ func _process(delta):
 		$AnimatedSprite.animation = "up"
 		$AnimatedSprite.flip_h = false
 		$AnimatedSprite.flip_v = velocity.y > 0
+
+func update_life(enemy):
+	var coef = enemy.damage.get_damage_for_player()
+	covid = covid + ((100 - (.5) * mask) * coef * randf())
+	mask = max(0, mask - (100 * coef * randf()))
+	emit_signal("hit", covid, mask)
+	print(covid, mask)
+	if covid > 100:
+		$CollisionShape2D.set_deferred("disabled", true)
+		queue_free()
 	
 func _on_Player_body_entered(body):
-	if body is Person:
-		print("I've collided with ", body)
-	hide()
-	emit_signal("hit")
-	$CollisionShape2D.set_deferred("disabled", true)
-	queue_free()
-
+	if body.get("damage"):
+		update_life(body)
+	
 func start(pos):
 	position = pos
 	show()

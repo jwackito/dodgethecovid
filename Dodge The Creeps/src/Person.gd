@@ -2,10 +2,9 @@ class_name Person
 extends KinematicBody2D
 
 export var collision_scale: Vector2
-export var damage: int
 export var min_speed: int
 export var max_speed: int
-export var min_damage_variation: float
+
 
 var default_sprite_name: String = "default"
 var speed: int
@@ -40,7 +39,4 @@ func _set_sprite_and_collision(animatedSprite, collision) -> void:
 	collision.scale.x = collision_scale.x
 	collision.scale.y = collision_scale.y
 
-
-func get_damage() -> float:
-	return damage * rand_range(min_damage_variation, 1)
 
