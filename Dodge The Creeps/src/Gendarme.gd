@@ -17,7 +17,6 @@ func _ready() -> void:
 func init(new_position: Vector2, direction, _enemy: Node2D) -> Gendarme:
 	self._enemy_node = _enemy
 	_init_person(new_position, direction)
-	damage = 0
 	return self
 
 

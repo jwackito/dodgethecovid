@@ -1,9 +1,12 @@
 class_name PersonWithMask
 extends Person
 
+const Damage = preload("res://src/Damagable.gd")
+var damage
 
 func _init() -> void:
 	default_sprite_name = "default"
+	self.damage = Damage.new(.35)
 
 
 func _ready() -> void: 
@@ -16,5 +19,4 @@ func _process(delta: float) -> void:
 
 func init(new_position, direction) -> PersonWithMask:
 	_init_person(new_position, direction)
-	damage = .35
 	return self

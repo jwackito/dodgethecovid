@@ -2,7 +2,6 @@ class_name Person
 extends KinematicBody2D
 
 export var collision_scale: Vector2
-export var damage: float
 export var min_speed: int
 export var max_speed: int
 
@@ -20,7 +19,6 @@ func _init_person(new_position, direction):
 	position = new_position
 	speed = int(rand_range(min_speed, max_speed))
 	velocity = Vector2(speed, 0).rotated(direction)
-	damage = .50
 
 
 func _person_process(delta):
@@ -41,7 +39,4 @@ func _set_sprite_and_collision(animatedSprite, collision) -> void:
 	collision.scale.x = collision_scale.x
 	collision.scale.y = collision_scale.y
 
-
-func get_damage_for_player() -> float:
-	return damage
 

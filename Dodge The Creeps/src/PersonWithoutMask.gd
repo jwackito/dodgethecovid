@@ -1,10 +1,13 @@
 class_name PersonWithoutMask
 extends Person
 
-export var coef = .5
+const Damage = preload("res://src/Damagable.gd")
+var damage
+
 
 func _init() -> void:
 	default_sprite_name = "default"
+	self.damage = Damage.new(.35)
 
 
 func _ready() -> void: 
