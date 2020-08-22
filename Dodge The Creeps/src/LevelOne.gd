@@ -8,6 +8,12 @@ export (PackedScene) var GendarmePackage
 export (PackedScene) var PolicePackage
 onready var SpawnEnemyTimer = get_node("SpawnEnemyTimer")
 
+export (PackedScene) var MaskPackage
+export (PackedScene) var CDSPackage
+export (PackedScene) var HCQSPackage
+export (PackedScene) var GelAlcoholPackage
+onready var SpawnItemTimer = get_node("SpawnItemTimer")
+
 const enemies = {
 	"person_with_mask": {
 		"spawn_percent": 40,
@@ -29,6 +35,7 @@ const enemies = {
 func _ready():
 	randomize()
 	SpawnEnemyTimer.start()
+	SpawnItemTimer.start()
 
 func _create_militia(Militia):
 	$InitPersonPath/InitPosition.set_offset(randi())
@@ -47,7 +54,6 @@ func _create_civil(Civil):
 	var person = Civil.instance().init(new_person_position, direction)
 	add_child(person)
 
-
 func _on_SpawnEnemyTimer_timeout():
 	var random_number = rand_range(0, 100)
 	if random_number < enemies.person_with_mask.spawn_percent:
@@ -60,3 +66,13 @@ func _on_SpawnEnemyTimer_timeout():
 		_create_militia(PolicePackage)
 	elif random_number < enemies.gendarme.spawn_percent:
 		_create_militia(GendarmePackage)
+
+func _spaw_item(Item):
+	var item = Item.instance()
+	item.position.x = 300
+	item.position.y = 300
+	add_child(item)
+
+func _on_SpawnItemTimer_timeout():
+	var items = [MaskPackage, GelAlcoholPackage, HCQSPackage, CDSPackage]
+	_spaw_item(items[randi()%4])

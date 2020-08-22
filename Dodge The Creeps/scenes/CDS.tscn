@@ -9,7 +9,6 @@ height = 98.9223
 
 [node name="CDS" instance=ExtResource( 2 )]
 position = Vector2( 404.77, 242.045 )
-mode = 0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )
