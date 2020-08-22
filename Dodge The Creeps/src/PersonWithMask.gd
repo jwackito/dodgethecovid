@@ -1,7 +1,6 @@
 class_name PersonWithMask
 extends Person
 
-export var coef = .35
 
 func _init() -> void:
 	default_sprite_name = "default"
@@ -17,4 +16,5 @@ func _process(delta: float) -> void:
 
 func init(new_position, direction) -> PersonWithMask:
 	_init_person(new_position, direction)
+	damage = .35
 	return self

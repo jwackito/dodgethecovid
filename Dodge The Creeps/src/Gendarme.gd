@@ -1,7 +1,6 @@
 class_name Gendarme
 extends Person
 
-export var coef = .0
 
 export var vision_range: int = 1000
 var _enemy_node: Node2D = null
@@ -18,6 +17,7 @@ func _ready() -> void:
 func init(new_position: Vector2, direction, _enemy: Node2D) -> Gendarme:
 	self._enemy_node = _enemy
 	_init_person(new_position, direction)
+	damage = 0
 	return self
 
 

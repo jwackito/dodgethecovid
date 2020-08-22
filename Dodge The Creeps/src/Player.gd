@@ -45,9 +45,9 @@ func _process(delta):
 		$AnimatedSprite.animation = "up"
 		$AnimatedSprite.flip_h = false
 		$AnimatedSprite.flip_v = velocity.y > 0
-	
-func _on_Player_body_entered(body):
-	var coef = body.coef
+
+func update_life(enemy):
+	var coef = enemy.get_damage_for_player()
 	covid = covid + ((100 - (.5) * mask) * coef * randf())
 	mask = max(0, mask - (100 * coef * randf()))
 	emit_signal("hit", covid, mask)
@@ -55,7 +55,11 @@ func _on_Player_body_entered(body):
 	if covid > 100:
 		$CollisionShape2D.set_deferred("disabled", true)
 		queue_free()
-
+	
+func _on_Player_body_entered(body):
+	if body.has_method("get_damage_for_player"):
+		update_life(body)
+	
 func start(pos):
 	position = pos
 	show()
