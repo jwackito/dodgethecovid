@@ -35,8 +35,8 @@ var size
 func _ready():
 	size = get_viewport().size
 	randomize()
-	SpawnEnemyTimer.start()
-	SpawnItemTimer.start()
+	$LevelLayer/SpawnEnemyTimer.start()
+	$LevelLayer/SpawnItemTimer.start()
 
 
 func _create_militia(Militia):
