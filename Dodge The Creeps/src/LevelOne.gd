@@ -35,7 +35,7 @@ func _create_militia(Militia):
 	var direction = $LevelLayer/InitPersonPath/InitPosition.rotation + PI/2
 	direction += rand_range(-PI/4, PI/4)
 	var gendarme_position: Vector2 = $LevelLayer/InitPersonPath/InitPosition.position
-	var gendarme = Militia.instance().init(gendarme_position, direction, $Player)
+	var gendarme = Militia.instance().init(gendarme_position, direction, $LevelLayer/Player)
 	add_child(gendarme)
 
 
