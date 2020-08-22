@@ -31,8 +31,9 @@ const enemies = {
 		"spawn_percent": 0,
 	},
 }
-
+var size
 func _ready():
+	size = get_viewport().size
 	randomize()
 	SpawnEnemyTimer.start()
 	SpawnItemTimer.start()
@@ -69,8 +70,8 @@ func _on_SpawnEnemyTimer_timeout():
 
 func _spaw_item(Item):
 	var item = Item.instance()
-	item.position.x = 300
-	item.position.y = 300
+	item.position.x = randi()%int(size.x)
+	item.position.y = randi()%int(size.y)
 	add_child(item)
 
 func _on_SpawnItemTimer_timeout():
