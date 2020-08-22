@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/LevelOne.gd" type="Script" id=1]
 [ext_resource path="res://scenes/PersonWithMask.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/Gendarme.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/PersonWithoutMask.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/PersonVisiblySick.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/art/bg.jpg" type="Texture" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -20,24 +21,32 @@ PersonWithoutMaskPackage = ExtResource( 6 )
 PersonVisiblySickPackage = ExtResource( 7 )
 GendarmePackage = ExtResource( 5 )
 
-[node name="Interface" parent="." instance=ExtResource( 3 )]
+[node name="HUDLayer" type="CanvasLayer" parent="."]
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="Interface" parent="HUDLayer" instance=ExtResource( 3 )]
+
+[node name="LevelLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Player" parent="LevelLayer" instance=ExtResource( 4 )]
 position = Vector2( 257.711, 247.592 )
 
-[node name="SpawnEnemyTimer" type="Timer" parent="."]
+[node name="SpawnEnemyTimer" type="Timer" parent="LevelLayer"]
 wait_time = 2.0
 
-[node name="InitPersonPath" type="Path2D" parent="."]
+[node name="InitPersonPath" type="Path2D" parent="LevelLayer"]
 position = Vector2( -1.05948, 0 )
 curve = SubResource( 1 )
 
-[node name="InitPosition" type="PathFollow2D" parent="InitPersonPath"]
+[node name="InitPosition" type="PathFollow2D" parent="LevelLayer/InitPersonPath"]
 position = Vector2( 21.3621, 47.4088 )
 rotation = -0.983001
-[connection signal="hit" from="Player" to="Interface" method="_on_Player_hit"]
-[connection signal="timeout" from="SpawnEnemyTimer" to="." method="_on_SpawnEnemyTimer_timeout"]
 
-[editable path="Interface"]
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
 
-[editable path="Interface/MaskBar"]
+[node name="Sprite" type="Sprite" parent="BackgroundLayer"]
+position = Vector2( 2044.73, 1887.44 )
+texture = ExtResource( 8 )
+[connection signal="hit" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_hit"]
+[connection signal="timeout" from="LevelLayer/SpawnEnemyTimer" to="." method="_on_SpawnEnemyTimer_timeout"]

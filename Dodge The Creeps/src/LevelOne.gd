@@ -28,22 +28,22 @@ const enemies = {
 
 func _ready():
 	randomize()
-	SpawnEnemyTimer.start()
+	$LevelLayer/SpawnEnemyTimer.start()
 
 func _create_militia(Militia):
-	$InitPersonPath/InitPosition.set_offset(randi())
-	var direction = $InitPersonPath/InitPosition.rotation + PI/2
+	$LevelLayer/InitPersonPath/InitPosition.set_offset(randi())
+	var direction = $LevelLayer/InitPersonPath/InitPosition.rotation + PI/2
 	direction += rand_range(-PI/4, PI/4)
-	var gendarme_position: Vector2 = $InitPersonPath/InitPosition.position
+	var gendarme_position: Vector2 = $LevelLayer/InitPersonPath/InitPosition.position
 	var gendarme = Militia.instance().init(gendarme_position, direction, $Player)
 	add_child(gendarme)
 
 
 func _create_civil(Civil):
-	$InitPersonPath/InitPosition.set_offset(randi()) # get random position
-	var direction = $InitPersonPath/InitPosition.rotation + PI/2
+	$LevelLayer/InitPersonPath/InitPosition.set_offset(randi()) # get random position
+	var direction = $LevelLayer/InitPersonPath/InitPosition.rotation + PI/2
 	direction += rand_range(-PI/4, PI/4)
-	var new_person_position = $InitPersonPath/InitPosition.position
+	var new_person_position = $LevelLayer/InitPersonPath/InitPosition.position
 	var person = Civil.instance().init(new_person_position, direction)
 	add_child(person)
 
