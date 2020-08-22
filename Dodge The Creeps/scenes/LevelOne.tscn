@@ -35,9 +35,10 @@ GelAlcoholPackage = ExtResource( 10 )
 
 [node name="LevelLayer" type="CanvasLayer" parent="."]
 layer = 0
+follow_viewport_enable = true
 
 [node name="Player" parent="LevelLayer" instance=ExtResource( 4 )]
-position = Vector2( 257.711, 247.592 )
+position = Vector2( 400, 304 )
 
 [node name="SpawnEnemyTimer" type="Timer" parent="LevelLayer"]
 wait_time = 2.0
@@ -46,6 +47,7 @@ wait_time = 2.0
 wait_time = 2.0
 
 [node name="InitPersonPath" type="Path2D" parent="LevelLayer"]
+visible = false
 position = Vector2( -1.05948, 0 )
 curve = SubResource( 1 )
 
@@ -55,9 +57,10 @@ rotation = -0.983001
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
+follow_viewport_enable = true
 
 [node name="Sprite" type="Sprite" parent="BackgroundLayer"]
-position = Vector2( 2044.73, 1887.44 )
+position = Vector2( 2560, 1616 )
 texture = ExtResource( 8 )
 [connection signal="hit" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_hit"]
 [connection signal="timeout" from="LevelLayer/SpawnEnemyTimer" to="." method="_on_SpawnEnemyTimer_timeout"]
