@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/LevelOne.gd" type="Script" id=1]
 [ext_resource path="res://scenes/PersonWithMask.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/HCQS.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/GelAlcohol.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/CDS.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Mask.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -23,7 +24,7 @@ PersonWithMaskPackage = ExtResource( 2 )
 PersonWithoutMaskPackage = ExtResource( 6 )
 PersonVisiblySickPackage = ExtResource( 7 )
 GendarmePackage = ExtResource( 5 )
-MaskPackage = ExtResource( 8 )
+MaskPackage = ExtResource( 12 )
 CDSPackage = ExtResource( 11 )
 HCQSPackage = ExtResource( 9 )
 GelAlcoholPackage = ExtResource( 10 )
@@ -44,9 +45,13 @@ wait_time = 2.0
 [node name="SpawnItemTimer" type="Timer" parent="LevelLayer"]
 wait_time = 2.0
 
-[node name="InitPersonPath" type="Path2D" parent="."]
+[node name="InitPersonPath" type="Path2D" parent="LevelLayer"]
 position = Vector2( -1.05948, 0 )
 curve = SubResource( 1 )
+
+[node name="InitPosition" type="PathFollow2D" parent="LevelLayer/InitPersonPath"]
+position = Vector2( 21.3621, 47.4088 )
+rotation = -0.983001
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
