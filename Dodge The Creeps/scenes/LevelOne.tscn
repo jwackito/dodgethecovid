@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/LevelOne.gd" type="Script" id=1]
 [ext_resource path="res://scenes/PersonWithMask.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://scenes/GelAlcohol.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/CDS.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/Mask.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/StartLevel.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/EndLevel.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -28,6 +30,8 @@ MaskPackage = ExtResource( 12 )
 CDSPackage = ExtResource( 11 )
 HCQSPackage = ExtResource( 9 )
 GelAlcoholPackage = ExtResource( 10 )
+StartLevel = ExtResource( 13 )
+EndLevel = ExtResource( 14 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
@@ -60,6 +64,7 @@ follow_viewport_enable = true
 [node name="Sprite" type="Sprite" parent="BackgroundLayer"]
 position = Vector2( 2560, 1616 )
 texture = ExtResource( 8 )
+[connection signal="end_level" from="LevelLayer/Player" to="." method="_on_Player_end_level"]
 [connection signal="hit" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_hit"]
 [connection signal="timeout" from="LevelLayer/SpawnEnemyTimer" to="." method="_on_SpawnEnemyTimer_timeout"]
 [connection signal="timeout" from="LevelLayer/SpawnItemTimer" to="." method="_on_SpawnItemTimer_timeout"]

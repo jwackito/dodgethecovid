@@ -2,7 +2,7 @@ class_name Player
 extends Area2D
 
 signal hit(covid, mask)
-
+signal end_level(covid, mask)
 var screen_size
 var level_size
 
@@ -18,7 +18,6 @@ func _ready():
 
 func get_velocity_from_input():
 	var velocity = Vector2()
-	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
@@ -58,7 +57,7 @@ func update_life(enemy):
 		queue_free()
 
 func update_mask():
-	mask += 25
+	mask =  min(100, mask + 25)
 	emit_signal("hit", covid, mask)
 
 func process_item(item):
@@ -73,13 +72,18 @@ func process_item(item):
 		pass
 	if type == "Mask":
 		update_mask()
-	item.queue_free()
+	if type == "LevelEnd":
+		emit_signal("end_level", mask, covid)
+	if type != "StartLevel":
+			item.queue_free()
 
 func _on_Player_body_entered(body):
 	if body.get("damage"):
 		update_life(body)
 	if body.get("type"):
 		process_item(body)
+	if body is Gendarme:
+		position = get_parent().get_parent().start_level_position
 	
 func start(pos):
 	position = pos

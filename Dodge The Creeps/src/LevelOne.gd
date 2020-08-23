@@ -12,7 +12,14 @@ export (PackedScene) var MaskPackage
 export (PackedScene) var CDSPackage
 export (PackedScene) var HCQSPackage
 export (PackedScene) var GelAlcoholPackage
+export (PackedScene) var StartLevel
+export (PackedScene) var EndLevel
+
 onready var SpawnItemTimer = get_node("SpawnItemTimer")
+
+export var level_size = Vector2(5000,3500)
+export var start_level_position = Vector2(0, 0)
+export var end_level_position = Vector2(5000, 3500)
 
 const enemies = {
 	"person_with_mask": {
@@ -31,12 +38,12 @@ const enemies = {
 		"spawn_percent": 0,
 	},
 }
-export var level_size = Vector2(5000,3500)
+
 func _ready():
 	randomize()
 	$LevelLayer/SpawnEnemyTimer.start()
 	$LevelLayer/SpawnItemTimer.start()
-
+	_spawn_start_end_level()
 
 func _create_militia(Militia):
 	$LevelLayer/InitPersonPath/InitPosition.set_offset(randi())
@@ -74,6 +81,19 @@ func _spaw_item(Item):
 	item.position.y = randi()%int(level_size.y)
 	add_child(item)
 
+func _spawn_start_end_level():
+	var start = StartLevel.instance()
+	var end = EndLevel.instance()
+	start.position = start_level_position
+	end.position = end_level_position
+	add_child(start)
+	add_child(end)
+	$LevelLayer/Player.position = start_level_position
+
 func _on_SpawnItemTimer_timeout():
 	var items = [MaskPackage, GelAlcoholPackage, HCQSPackage, CDSPackage]
 	_spaw_item(items[randi()%4])
+
+
+func _on_Player_end_level(covid, mask):
+	$LevelLayer/Player.queue_free()
