@@ -53,7 +53,6 @@ func update_life(enemy):
 	covid = covid + ((100 - (.5) * mask) * coef * randf())
 	mask = max(0, mask - (100 * coef * randf()))
 	emit_signal("hit", covid, mask)
-	print(covid, mask)
 	if covid > 100:
 		$CollisionShape2D.set_deferred("disabled", true)
 		queue_free()

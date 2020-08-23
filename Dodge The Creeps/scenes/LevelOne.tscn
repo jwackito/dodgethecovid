@@ -47,6 +47,7 @@ wait_time = 2.0
 wait_time = 2.0
 
 [node name="InitPersonPath" type="Path2D" parent="LevelLayer"]
+visible = false
 position = Vector2( -129.849, -109.044 )
 curve = SubResource( 1 )
 
