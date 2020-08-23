@@ -1,36 +1,33 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/art/playerGrey_up1.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/person/happy.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/art/playerGrey_walk2.png" type="Texture" id=3]
-[ext_resource path="res://assets/art/playerGrey_up2.png" type="Texture" id=4]
-[ext_resource path="res://assets/art/playerGrey_walk1.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
-"loop": true,
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
 "name": "up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
-"loop": true,
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
 "name": "walk",
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 27.3141
-height = 14.6893
+[sub_resource type="CircleShape2D" id=2]
+radius = 33.3206
 
 [node name="Player" type="Area2D"]
+position = Vector2( 0, -1.25992 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 1 )
 animation = "up"
 
