@@ -57,10 +57,30 @@ func update_life(enemy):
 	if covid > 100:
 		$CollisionShape2D.set_deferred("disabled", true)
 		queue_free()
-	
+
+func update_mask():
+	mask += 25
+	emit_signal("hit", covid, mask)
+
+func process_item(item):
+	var type = item.type
+	if type == "HCQS":
+		pass
+	if type == "Gel":
+		# Start inmunity timer, change coef to 0.1
+		pass
+	if type == "CDS":
+		#invert controls, start timer
+		pass
+	if type == "Mask":
+		update_mask()
+	item.queue_free()
+
 func _on_Player_body_entered(body):
 	if body.get("damage"):
 		update_life(body)
+	if body.get("type"):
+		process_item(body)
 	
 func start(pos):
 	position = pos
