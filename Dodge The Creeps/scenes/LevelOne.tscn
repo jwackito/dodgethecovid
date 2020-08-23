@@ -15,7 +15,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 21.3621, 47.4088, 0, 0, 0, 0, 38.4893, 21.7065, 0, 0, 0, 0, 716.327, 31.7859, 0, 0, 0, 0, 769.244, 36.8256, 0, 0, 0, 0, 772.021, 548.094, 0, 0, 0, 0, 700.749, 585.512, 0, 0, 0, 0, 62.8659, 580.166, 0, 0, 0, 0, 34.3571, 544.53, 0, 0, 0, 0, 21.3621, 47.4088 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5000, 0, 0, 0, 0, 0, 5000, 3500, 0, 0, 0, 0, 0, 3500, 0, 0, 0, 0, 0, 0 )
 }
 
 [node name="LevelOne" type="Node"]
@@ -47,14 +47,10 @@ wait_time = 2.0
 wait_time = 2.0
 
 [node name="InitPersonPath" type="Path2D" parent="LevelLayer"]
-visible = false
 position = Vector2( -129.849, -109.044 )
-scale = Vector2( 7.02889, 6.02354 )
 curve = SubResource( 1 )
 
 [node name="InitPosition" type="PathFollow2D" parent="LevelLayer/InitPersonPath"]
-position = Vector2( 21.3621, 47.4088 )
-rotation = -0.983001
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
