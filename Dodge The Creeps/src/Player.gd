@@ -72,7 +72,7 @@ func process_item(item):
 		pass
 	if type == "Mask":
 		update_mask()
-	if type == "LevelEnd":
+	if type == "EndLevel":
 		emit_signal("end_level", mask, covid)
 	if type != "StartLevel":
 			item.queue_free()

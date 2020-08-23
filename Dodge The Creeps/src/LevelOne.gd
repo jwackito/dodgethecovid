@@ -96,4 +96,5 @@ func _on_SpawnItemTimer_timeout():
 
 
 func _on_Player_end_level(covid, mask):
+	print("ending level...")
 	$LevelLayer/Player.queue_free()
