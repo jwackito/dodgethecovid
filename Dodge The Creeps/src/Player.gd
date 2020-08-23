@@ -14,7 +14,7 @@ export var mask  = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	level_size = Vector2(5000, 3500)
+	level_size = get_parent().get_parent().level_size
 
 func get_velocity_from_input():
 	var velocity = Vector2()

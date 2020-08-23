@@ -31,9 +31,8 @@ const enemies = {
 		"spawn_percent": 0,
 	},
 }
-var size
+export var level_size = Vector2(5000,3500)
 func _ready():
-	size = get_viewport().size
 	randomize()
 	$LevelLayer/SpawnEnemyTimer.start()
 	$LevelLayer/SpawnItemTimer.start()
@@ -71,8 +70,8 @@ func _on_SpawnEnemyTimer_timeout():
 
 func _spaw_item(Item):
 	var item = Item.instance()
-	item.position.x = randi()%int(size.x)
-	item.position.y = randi()%int(size.y)
+	item.position.x = randi()%int(level_size.x)
+	item.position.y = randi()%int(level_size.y)
 	add_child(item)
 
 func _on_SpawnItemTimer_timeout():
