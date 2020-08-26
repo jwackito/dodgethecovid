@@ -22,6 +22,12 @@ func _on_Level_level_ended(covid, mask):
 	$VBoxContainer.show()
 	$VBoxContainer/Button.text = "Next Level"
 
+func _on_Player_gameovered():
+	remove_child(level)
+	$VBoxContainer.show()
+	$VBoxContainer/Label.text = "Game Over"
+	$VBoxContainer/Button.text = "New Game"
+
 func _on_Button_pressed():
 	level = load("scenes/LevelOne.tscn").instance()
 	add_child(level)
@@ -30,6 +36,7 @@ func _on_Button_pressed():
 	player.covid = usercovid
 	player.mask = usermask
 	player.connect("end_level", self, "_on_Player_level_ended")
+	player.connect("gameover", self, "_on_Player_gameovered")
 	player.emit_signal("hit", usercovid, usermask)
 	$VBoxContainer.hide()
 

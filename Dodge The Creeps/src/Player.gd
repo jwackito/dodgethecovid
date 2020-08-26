@@ -3,6 +3,7 @@ extends Area2D
 
 signal hit(covid, mask)
 signal end_level(covid, mask)
+signal gameover
 var screen_size
 var level_size
 
@@ -54,6 +55,7 @@ func update_life(enemy):
 	emit_signal("hit", covid, mask)
 	if covid > 100:
 		$CollisionShape2D.set_deferred("disabled", true)
+		emit_signal("gameover")
 		queue_free()
 
 func update_mask():
