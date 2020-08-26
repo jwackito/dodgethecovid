@@ -25,7 +25,7 @@ margin_top = 94.7976
 margin_right = 268.74
 margin_bottom = 130.798
 script = ExtResource( 5 )
-[connection signal="update_bars" from="." to="CovidBar" method="_on_Interface_update_bars"]
 [connection signal="update_bars" from="." to="MaskBar" method="_on_Interface_update_bars"]
+[connection signal="update_bars" from="." to="CovidBar" method="_on_Interface_update_bars"]
 
 [editable path="MaskBar"]

@@ -69,7 +69,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Escape From Covid-19"
-run/main_scene="res://scenes/LevelOne.tscn"
+run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 
 [display]

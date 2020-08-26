@@ -13,12 +13,14 @@ func _ready():
 	usercovid = 0
 	usermask = 0
 
-func _on_Level_level_ended(covid, mask):
+func _on_Player_level_ended(covid, mask):
 	usercovid = covid
 	usermask = mask
+
+func _on_Level_level_ended(covid, mask):
 	remove_child(level)
 	$VBoxContainer.show()
-	$VBoxContainer/Button.text = "Next Level"	
+	$VBoxContainer/Button.text = "Next Level"
 
 func _on_Button_pressed():
 	level = load("scenes/LevelOne.tscn").instance()
@@ -27,6 +29,8 @@ func _on_Button_pressed():
 	var player = level.get_node("LevelLayer/Player")
 	player.covid = usercovid
 	player.mask = usermask
+	player.connect("end_level", self, "_on_Player_level_ended")
+	player.emit_signal("hit", usercovid, usermask)
 	$VBoxContainer.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
