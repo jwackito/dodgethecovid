@@ -7,8 +7,8 @@ var screen_size
 var level_size
 
 export var speed = 400
-export var covid  = 0
-export var mask  = 0
+export var covid = 0
+export var mask = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -73,7 +73,7 @@ func process_item(item):
 	if type == "Mask":
 		update_mask()
 	if type == "EndLevel":
-		emit_signal("end_level", mask, covid)
+		emit_signal("end_level", covid, mask)
 	if type != "StartLevel":
 			item.queue_free()
 

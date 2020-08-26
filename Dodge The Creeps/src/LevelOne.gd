@@ -6,7 +6,7 @@ export (PackedScene) var PersonWithoutMaskPackage
 export (PackedScene) var PersonVisiblySickPackage
 export (PackedScene) var GendarmePackage
 export (PackedScene) var PolicePackage
-onready var SpawnEnemyTimer = get_node("SpawnEnemyTimer")
+#onready var SpawnEnemyTimer = get_node("SpawnEnemyTimer")
 
 export (PackedScene) var MaskPackage
 export (PackedScene) var CDSPackage
@@ -15,11 +15,13 @@ export (PackedScene) var GelAlcoholPackage
 export (PackedScene) var StartLevel
 export (PackedScene) var EndLevel
 
-onready var SpawnItemTimer = get_node("SpawnItemTimer")
+#onready var SpawnItemTimer = get_node("SpawnItemTimer")
 
 export var level_size = Vector2(5000,3500)
 export var start_level_position = Vector2(0, 0)
 export var end_level_position = Vector2(5000, 3500)
+
+signal level_ended(covid, mask)
 
 const enemies = {
 	"person_with_mask": {
@@ -96,5 +98,5 @@ func _on_SpawnItemTimer_timeout():
 
 
 func _on_Player_end_level(covid, mask):
-	print("ending level...")
-	$LevelLayer/Player.queue_free()
+	emit_signal("level_ended", covid, mask)
+	#$LevelLayer/Player.queue_free()
