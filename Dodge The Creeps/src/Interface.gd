@@ -10,6 +10,7 @@ signal update_bars(covid, mask)
 func _ready():
 	$AlcoholCounter.hide()
 	$CDSCounter.hide()
+	#$PermitCounter.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -35,3 +36,6 @@ func _on_Player_cds_timeout():
 
 func _on_Player_cds_update(value):
 	$CDSCounter/Label.text = "%0.2f s"%(value)
+
+func _on_Player_permit_update(permits):
+	$PermitCounter/Label.text = "%d"%permits

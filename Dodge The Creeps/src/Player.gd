@@ -10,6 +10,8 @@ signal cds_update(value)
 signal end_level(covid, mask)
 signal gameover
 signal hit(covid, mask)
+signal permit_update(permits)
+
 
 var screen_size
 var level_size
@@ -18,6 +20,7 @@ export var alcohol_on = false
 export var cds_on = false
 export var covid = 0
 export var mask = 0
+export var permits = 0
 export var speed = 400
 
 # Called when the node enters the scene tree for the first time.
@@ -36,7 +39,6 @@ func get_velocity_from_input():
 		velocity.y += 1
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
-	
 	return velocity.normalized() * speed
 
 func _process(delta):
@@ -96,6 +98,9 @@ func process_item(item):
 		update_mask()
 	if type == "EndLevel":
 		emit_signal("end_level", covid, mask)
+	if type == "Permit":
+		permits += 1
+		emit_signal("permit_update", permits)
 	if type != "StartLevel":
 			item.queue_free()
 
@@ -105,7 +110,12 @@ func _on_Player_body_entered(body):
 	if body.get("type"):
 		process_item(body)
 	if body is Gendarme:
-		position = get_parent().get_parent().start_level_position
+		if permits == 0:
+			position = get_parent().get_parent().start_level_position
+		else:
+			permits -= 1
+			emit_signal("permit_update", permits)
+		
 	
 func start(pos):
 	position = pos
