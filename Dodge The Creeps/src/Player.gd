@@ -1,21 +1,27 @@
 class_name Player
 extends Area2D
 
-signal hit(covid, mask)
+signal alcohol_hit
+signal alcohol_timeout
+signal alcohol_update(value)
 signal end_level(covid, mask)
 signal gameover
+signal hit(covid, mask)
+
 var screen_size
 var level_size
 
 export var speed = 400
 export var covid = 0
 export var mask = 0
+export var alcohol_on = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 	level_size = get_parent().get_parent().level_size
+	alcohol_on = false
 
 func get_velocity_from_input():
 	var velocity = Vector2()
@@ -47,9 +53,15 @@ func _process(delta):
 		$AnimatedSprite.animation = "up"
 		$AnimatedSprite.flip_h = false
 		$AnimatedSprite.flip_v = velocity.y > 0
+	if alcohol_on:
+		emit_signal("alcohol_update", $AlcoholTimer.get_time_left())
 
 func update_life(enemy):
-	var coef = enemy.damage.get_damage_for_player()
+	var coef
+	if alcohol_on:
+		coef = 0.1
+	else:
+		coef = enemy.damage.get_damage_for_player()
 	covid = covid + ((100 - (.5) * mask) * coef * randf())
 	mask = max(0, mask - (100 * coef * randf()))
 	emit_signal("hit", covid, mask)
@@ -67,8 +79,9 @@ func process_item(item):
 	if type == "HCQS":
 		pass
 	if type == "Gel":
-		# Start inmunity timer, change coef to 0.1
-		pass
+		$AlcoholTimer.start()
+		alcohol_on = true
+		emit_signal("alcohol_hit")
 	if type == "CDS":
 		#invert controls, start timer
 		pass
@@ -91,3 +104,9 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+
+func _on_AlcoholTimer_timeout():
+	alcohol_on = false
+	emit_signal("alcohol_timeout")
+	print("Alcohol off")
+	

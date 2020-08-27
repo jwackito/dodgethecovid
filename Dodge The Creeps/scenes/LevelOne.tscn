@@ -64,7 +64,12 @@ follow_viewport_enable = true
 [node name="Sprite" type="Sprite" parent="BackgroundLayer"]
 position = Vector2( 2560, 1616 )
 texture = ExtResource( 8 )
+[connection signal="alcohol_hit" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_alcohol_hit"]
+[connection signal="alcohol_timeout" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_alcohol_timeout"]
+[connection signal="alcohol_update" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_alcohol_update"]
 [connection signal="end_level" from="LevelLayer/Player" to="." method="_on_Player_end_level"]
 [connection signal="hit" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_hit"]
 [connection signal="timeout" from="LevelLayer/SpawnEnemyTimer" to="." method="_on_SpawnEnemyTimer_timeout"]
 [connection signal="timeout" from="LevelLayer/SpawnItemTimer" to="." method="_on_SpawnItemTimer_timeout"]
+
+[editable path="HUDLayer/Interface"]
