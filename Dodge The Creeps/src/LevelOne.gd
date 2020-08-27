@@ -12,6 +12,7 @@ export (PackedScene) var MaskPackage
 export (PackedScene) var CDSPackage
 export (PackedScene) var HCQSPackage
 export (PackedScene) var GelAlcoholPackage
+export (PackedScene) var PermitPackage
 export (PackedScene) var StartLevel
 export (PackedScene) var EndLevel
 
@@ -93,8 +94,8 @@ func _spawn_start_end_level():
 	$LevelLayer/Player.position = start_level_position
 
 func _on_SpawnItemTimer_timeout():
-	var items = [MaskPackage, GelAlcoholPackage, HCQSPackage, CDSPackage]
-	_spaw_item(items[randi()%4])
+	var items = [MaskPackage, GelAlcoholPackage, HCQSPackage, CDSPackage, PermitPackage]
+	_spaw_item(items[randi()%5])
 
 
 func _on_Player_end_level(covid, mask):
