@@ -4,6 +4,9 @@ extends Area2D
 signal alcohol_hit
 signal alcohol_timeout
 signal alcohol_update(value)
+signal cds_hit
+signal cds_timeout
+signal cds_update(value)
 signal end_level(covid, mask)
 signal gameover
 signal hit(covid, mask)
@@ -11,11 +14,11 @@ signal hit(covid, mask)
 var screen_size
 var level_size
 
-export var speed = 400
+export var alcohol_on = false
+export var cds_on = false
 export var covid = 0
 export var mask = 0
-export var alcohol_on = false
-
+export var speed = 400
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,6 +45,9 @@ func _process(delta):
 		$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
+	if cds_on:
+		velocity = -velocity
+		emit_signal("cds_update",$CDSTimer.get_time_left())
 	position += velocity * delta
 	position.x = clamp(position.x, 0, level_size.x)
 	position.y = clamp(position.y, 0, level_size.y)
@@ -83,8 +89,9 @@ func process_item(item):
 		alcohol_on = true
 		emit_signal("alcohol_hit")
 	if type == "CDS":
-		#invert controls, start timer
-		pass
+		$CDSTimer.start()
+		cds_on = true
+		emit_signal("cds_hit")
 	if type == "Mask":
 		update_mask()
 	if type == "EndLevel":
@@ -108,5 +115,7 @@ func start(pos):
 func _on_AlcoholTimer_timeout():
 	alcohol_on = false
 	emit_signal("alcohol_timeout")
-	print("Alcohol off")
-	
+
+func _on_CDSTimer_timeout():
+	cds_on = false
+	emit_signal("cds_timeout")
