@@ -47,7 +47,7 @@ follow_viewport_enable = true
 position = Vector2( 400, 304 )
 
 [node name="SpawnEnemyTimer" type="Timer" parent="LevelLayer"]
-wait_time = 2.0
+wait_time = 0.458
 
 [node name="SpawnItemTimer" type="Timer" parent="LevelLayer"]
 wait_time = 2.0
