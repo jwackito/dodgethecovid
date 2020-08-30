@@ -5,11 +5,12 @@ extends Control
 # var a = 2
 # var b = "text"
 
-########
+# ######################
 # Difficulty:
 #   * "Im not in a risk group": covid resets, permits at least 1, mask at least 50%, 1 level retry
 #   * "Resfriadinho":  covid resets, 1 level retry except first
 #   * "Im legend": whatever you got in a level, is what you get in the next, no retrys
+# ######################
 var difficulty
 var level
 var usercovid
