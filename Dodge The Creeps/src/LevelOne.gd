@@ -22,7 +22,7 @@ export var level_size = Vector2(5000,3500)
 export var start_level_position = Vector2(0, 0)
 export var end_level_position = Vector2(5000, 3500)
 
-signal level_ended(covid, mask)
+signal level_ended(covid, mask, permits)
 
 const enemies = {
 	"person_with_mask": {
@@ -98,6 +98,6 @@ func _on_SpawnItemTimer_timeout():
 	_spaw_item(items[randi()%5])
 
 
-func _on_Player_end_level(covid, mask):
-	emit_signal("level_ended", covid, mask)
+func _on_Player_end_level(covid, mask, permits):
+	emit_signal("level_ended", covid, mask, permits)
 	#$LevelLayer/Player.queue_free()

@@ -7,7 +7,7 @@ signal alcohol_update(value)
 signal cds_hit
 signal cds_timeout
 signal cds_update(value)
-signal end_level(covid, mask)
+signal end_level(covid, mask, permits)
 signal gameover
 signal hit(covid, mask)
 signal permit_update(permits)
@@ -97,7 +97,7 @@ func process_item(item):
 	if type == "Mask":
 		update_mask()
 	if type == "EndLevel":
-		emit_signal("end_level", covid, mask)
+		emit_signal("end_level", covid, mask, permits)
 	if type == "Permit":
 		permits += 1
 		emit_signal("permit_update", permits)
