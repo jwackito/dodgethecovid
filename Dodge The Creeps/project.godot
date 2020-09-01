@@ -58,6 +58,16 @@ _global_script_classes=[ {
 "class": "Police",
 "language": "GDScript",
 "path": "res://src/Police.gd"
+}, {
+"base": "Reference",
+"class": "RandomPointsSurface",
+"language": "GDScript",
+"path": "res://src/utils/random_points_surface.gd"
+}, {
+"base": "Reference",
+"class": "Spawner",
+"language": "GDScript",
+"path": "res://src/utils/spawner.gd"
 } ]
 _global_script_class_icons={
 "Damagable": "",
@@ -69,7 +79,9 @@ _global_script_class_icons={
 "PersonWithMask": "",
 "PersonWithoutMask": "",
 "Player": "",
-"Police": ""
+"Police": "",
+"RandomPointsSurface": "",
+"Spawner": ""
 }
 
 [application]
