@@ -72,3 +72,4 @@ align = 1
 [node name="InterfaceTimer" type="Timer" parent="."]
 wait_time = 2.0
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="item_selected" from="VBoxContainer/DifficultyContainer/Difficulty" to="." method="_on_Difficulty_item_selected"]
