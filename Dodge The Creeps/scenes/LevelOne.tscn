@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/LevelOne.gd" type="Script" id=1]
 [ext_resource path="res://scenes/PersonWithMask.tscn" type="PackedScene" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/Gendarme.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/PersonWithoutMask.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/PersonVisiblySick.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/art/bg.jpg" type="Texture" id=8]
+[ext_resource path="res://assets/art/bg2.png" type="Texture" id=8]
 [ext_resource path="res://scenes/HCQS.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/GelAlcohol.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/CDS.tscn" type="PackedScene" id=11]
@@ -15,6 +15,7 @@
 [ext_resource path="res://scenes/StartLevel.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/EndLevel.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/Permit.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -23,10 +24,6 @@ _data = {
 
 [node name="LevelOne" type="Node"]
 script = ExtResource( 1 )
-PersonWithMaskPackage = ExtResource( 2 )
-PersonWithoutMaskPackage = ExtResource( 6 )
-PersonVisiblySickPackage = ExtResource( 7 )
-GendarmePackage = ExtResource( 5 )
 MaskPackage = ExtResource( 12 )
 CDSPackage = ExtResource( 11 )
 HCQSPackage = ExtResource( 9 )
@@ -34,6 +31,10 @@ GelAlcoholPackage = ExtResource( 10 )
 PermitPackage = ExtResource( 15 )
 StartLevel = ExtResource( 13 )
 EndLevel = ExtResource( 14 )
+PersonWithMaskPackage = ExtResource( 2 )
+PersonWithoutMaskPackage = ExtResource( 6 )
+PersonVisiblySickPackage = ExtResource( 7 )
+GendarmePackage = ExtResource( 5 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
@@ -45,6 +46,7 @@ follow_viewport_enable = true
 
 [node name="Player" parent="LevelLayer" instance=ExtResource( 4 )]
 position = Vector2( 400, 304 )
+collision_mask = 2147483649
 
 [node name="SpawnEnemyTimer" type="Timer" parent="LevelLayer"]
 wait_time = 0.458
@@ -59,12 +61,386 @@ curve = SubResource( 1 )
 
 [node name="InitPosition" type="PathFollow2D" parent="LevelLayer/InitPersonPath"]
 
+[node name="Wall" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 282.175, -148.966 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall84" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( -138.468, -176.329 )
+rotation = -1.0472
+mode = 1
+
+[node name="Wall2" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 466.978, -30.0134 )
+mode = 1
+
+[node name="Wall82" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 95.3015, -275.555 )
+mode = 1
+
+[node name="Wall83" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( -202.182, 98.2578 )
+rotation = 1.57079
+mode = 1
+
+[node name="Wall3" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 778.063, -28.6832 )
+mode = 1
+
+[node name="Wall4" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 1088.3, -28.6355 )
+mode = 1
+
+[node name="Wall17" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5115.59, -20.8317 )
+mode = 1
+
+[node name="Wall18" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5426.52, -19.6049 )
+mode = 1
+
+[node name="Wall19" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5545.61, 105.725 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall20" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5546.72, 415.528 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall67" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2937.13, 950.932 )
+mode = 1
+
+[node name="Wall68" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3248.06, 952.159 )
+mode = 1
+
+[node name="Wall69" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3367.15, 1077.49 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall70" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3368.26, 1387.29 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall21" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5545.61, 720.049 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall22" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5546.72, 1029.85 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall61" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 1847.9, 1570.3 )
+mode = 1
+
+[node name="Wall62" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2158.84, 1571.52 )
+mode = 1
+
+[node name="Wall63" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2277.92, 1696.85 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall64" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2279.04, 2006.66 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall65" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2277.92, 2311.18 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall66" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2279.04, 2620.98 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall23" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5548.44, 1338.92 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall24" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5549.55, 1648.72 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall25" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5548.44, 1953.24 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall26" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5549.55, 2263.05 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall27" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5553.19, 2570.94 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall28" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5554.31, 2880.74 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall29" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5553.19, 3185.26 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall30" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5554.31, 3495.06 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall49" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( -12.3701, 222.863 )
+mode = 1
+
+[node name="Wall50" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( -6.21143, 404.849 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall51" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( -7.32471, 709.371 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall52" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( -6.21143, 1019.17 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall53" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( -4.49658, 1328.24 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall54" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( -3.3833, 1638.04 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall55" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( -4.49658, 1942.56 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall56" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( -3.3833, 2252.37 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall57" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 0.260254, 2560.26 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall58" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 1.37354, 2870.06 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall59" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 0.260254, 3174.58 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall60" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 1.37354, 3484.39 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall5" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 1397.39, -28.0654 )
+mode = 1
+
+[node name="Wall6" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 1708.33, -26.8386 )
+mode = 1
+
+[node name="Wall7" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2019.41, -25.5084 )
+mode = 1
+
+[node name="Wall8" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2329.65, -25.4607 )
+mode = 1
+
+[node name="Wall9" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2635.56, -24.8906 )
+mode = 1
+
+[node name="Wall10" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2946.5, -23.6638 )
+mode = 1
+
+[node name="Wall11" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3257.58, -22.3336 )
+mode = 1
+
+[node name="Wall12" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3567.82, -22.2859 )
+mode = 1
+
+[node name="Wall13" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3876.91, -21.7158 )
+mode = 1
+
+[node name="Wall14" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 4187.85, -20.489 )
+mode = 1
+
+[node name="Wall15" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 4498.93, -19.1588 )
+mode = 1
+
+[node name="Wall16" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 4809.17, -19.1111 )
+mode = 1
+
+[node name="Wall31" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 124.004, 3599.52 )
+mode = 1
+
+[node name="Wall32" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 434.942, 3600.75 )
+mode = 1
+
+[node name="Wall77" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3354.49, 1951.69 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall78" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3353.38, 2256.21 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall79" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3354.49, 2566.02 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall80" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3477.12, 2681.15 )
+mode = 1
+
+[node name="Wall81" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3788.06, 2682.38 )
+mode = 1
+
+[node name="Wall33" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 746.027, 3602.08 )
+mode = 1
+
+[node name="Wall34" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 1056.26, 3602.13 )
+mode = 1
+
+[node name="Wall35" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5083.55, 3609.93 )
+mode = 1
+
+[node name="Wall36" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 5394.49, 3611.16 )
+mode = 1
+
+[node name="Wall37" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 1365.35, 3602.7 )
+mode = 1
+
+[node name="Wall38" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 1676.29, 3603.93 )
+mode = 1
+
+[node name="Wall39" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 1987.37, 3605.26 )
+mode = 1
+
+[node name="Wall40" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2297.61, 3605.3 )
+mode = 1
+
+[node name="Wall41" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2603.52, 3605.87 )
+mode = 1
+
+[node name="Wall42" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 2914.46, 3607.1 )
+mode = 1
+
+[node name="Wall43" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3225.55, 3608.43 )
+mode = 1
+
+[node name="Wall44" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3535.79, 3608.48 )
+mode = 1
+
+[node name="Wall45" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3844.87, 3609.05 )
+mode = 1
+
+[node name="Wall46" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 4155.81, 3610.28 )
+mode = 1
+
+[node name="Wall47" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 4466.9, 3611.61 )
+mode = 1
+
+[node name="Wall48" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 4777.13, 3611.65 )
+mode = 1
+
+[node name="Wall71" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 4581.43, 1348.52 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall72" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 4582.54, 1658.32 )
+rotation = 1.5708
+mode = 1
+
+[node name="Wall73" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 4111.79, 1773.19 )
+mode = 1
+
+[node name="Wall74" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 4422.72, 1774.42 )
+mode = 1
+
+[node name="Wall75" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3495.13, 1774.87 )
+mode = 1
+
+[node name="Wall76" parent="LevelLayer" instance=ExtResource( 16 )]
+position = Vector2( 3805.37, 1774.91 )
+mode = 1
+
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
 follow_viewport_enable = true
 
 [node name="Sprite" type="Sprite" parent="BackgroundLayer"]
-position = Vector2( 2560, 1616 )
+position = Vector2( 2670.87, 1686.56 )
+scale = Vector2( 1.21771, 1.17855 )
 texture = ExtResource( 8 )
 [connection signal="alcohol_hit" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_alcohol_hit"]
 [connection signal="alcohol_timeout" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_alcohol_timeout"]

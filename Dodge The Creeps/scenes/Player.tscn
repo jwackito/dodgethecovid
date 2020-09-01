@@ -19,7 +19,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 33.3206
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -1.25992 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -47,6 +47,5 @@ one_shot = true
 [node name="CDSTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 [connection signal="timeout" from="AlcoholTimer" to="." method="_on_AlcoholTimer_timeout"]
 [connection signal="timeout" from="CDSTimer" to="." method="_on_CDSTimer_timeout"]

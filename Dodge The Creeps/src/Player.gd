@@ -1,5 +1,5 @@
 class_name Player
-extends Area2D
+extends KinematicBody2D
 
 signal alcohol_hit
 signal alcohol_timeout
@@ -41,16 +41,20 @@ func get_velocity_from_input():
 		velocity.y -= 1
 	return velocity.normalized() * speed
 
+func _physics_process(delta):
+	var velocity = get_velocity_from_input()
+	if cds_on:
+		velocity = -velocity
+		emit_signal("cds_update",$CDSTimer.get_time_left())
+	move_and_slide(velocity)
+	
 func _process(delta):
 	var velocity = get_velocity_from_input()
 	if velocity.length() > 0:
 		$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
-	if cds_on:
-		velocity = -velocity
-		emit_signal("cds_update",$CDSTimer.get_time_left())
-	position += velocity * delta
+#	position += velocity * delta
 	position.x = clamp(position.x, 0, level_size.x)
 	position.y = clamp(position.y, 0, level_size.y)
 	if velocity.x != 0:
@@ -121,6 +125,9 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+
+func got_hit(body):
+	_on_Player_body_entered(body)
 
 func _on_AlcoholTimer_timeout():
 	alcohol_on = false
