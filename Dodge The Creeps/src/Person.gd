@@ -21,17 +21,20 @@ func _init_person(new_position, direction):
 	velocity = Vector2(speed, 0).rotated(direction)
 
 
-func _person_process(delta):
-	if (velocity):
-		_move(delta)
+#func _person_process(delta):
+#	if (velocity):
+#		_move(delta)
 
 
-func _move(delta) -> void:
+func _physics_process(delta):
 	var collision := move_and_collide(velocity * delta)
 	if (collision):
 		var reflect := collision.remainder.bounce(collision.normal)
 		velocity = velocity.bounce(collision.normal)
 		move_and_collide(reflect)
+		if collision.collider.has_method("got_hit"):
+			collision.collider.got_hit(self)
+		
 
 
 func _set_sprite_and_collision(animatedSprite, collision) -> void:

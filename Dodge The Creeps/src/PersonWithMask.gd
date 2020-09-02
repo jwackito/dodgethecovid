@@ -14,8 +14,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	_person_process(delta)
-
+	#_person_process(delta)
+	pass
 
 func init(new_position, direction) -> PersonWithMask:
 	_init_person(new_position, direction)

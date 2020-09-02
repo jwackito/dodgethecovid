@@ -30,7 +30,7 @@ func _process(delta: float):
 			velocity = distance.normalized() * speed
 		elif _is_in_pursuit:
 			_unset_in_pursuit()
-	._move(delta)
+	#_move(delta)
 
 
 func _set_in_pursuit():

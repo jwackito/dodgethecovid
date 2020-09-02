@@ -1,5 +1,5 @@
 class_name Item
-extends RigidBody2D
+extends Area2D
 
 
 # Declare member variables here. Examples:
@@ -15,8 +15,9 @@ func _ready():
 func init(x, y) -> Item:
 	position.x = x
 	position.y = y
-	
 	return self
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+
+func _on_Item_body_entered(body):
+	if body.has_method("got_hit"):
+			body.got_hit(self)
