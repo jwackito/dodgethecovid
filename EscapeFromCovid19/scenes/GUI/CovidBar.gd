@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Bar
 
 
 # Declare member variables here. Examples:

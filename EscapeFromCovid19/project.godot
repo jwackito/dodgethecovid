@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "HBoxContainer",
+"class": "Bar",
+"language": "GDScript",
+"path": "res://scenes/GUI/Bar.gd"
+}, {
 "base": "Node",
 "class": "Damagable",
 "language": "GDScript",
@@ -70,6 +75,7 @@ _global_script_classes=[ {
 "path": "res://src/utils/spawner.gd"
 } ]
 _global_script_class_icons={
+"Bar": "",
 "Damagable": "",
 "Gendarme": "",
 "Item": "",
