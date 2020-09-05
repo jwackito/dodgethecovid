@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/LevelOne.gd" type="Script" id=1]
 [ext_resource path="res://scenes/PersonWithMask.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://scenes/EndLevel.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/Permit.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/art/end_level.png" type="Texture" id=17]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -442,6 +443,19 @@ follow_viewport_enable = true
 position = Vector2( 2670.87, 1686.56 )
 scale = Vector2( 1.21771, 1.17855 )
 texture = ExtResource( 8 )
+
+[node name="ObjectiveLabel" type="Label" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Find the house"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ObjectiveSprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 17 )
 [connection signal="alcohol_hit" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_alcohol_hit"]
 [connection signal="alcohol_timeout" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_alcohol_timeout"]
 [connection signal="alcohol_update" from="LevelLayer/Player" to="HUDLayer/Interface" method="_on_Player_alcohol_update"]
