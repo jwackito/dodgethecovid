@@ -119,7 +119,7 @@ func _on_Player_body_entered(body):
 		else:
 			permits -= 1
 			emit_signal("permit_update", permits)
-		
+		body.handle_collision_with_player()
 	
 func start(pos):
 	position = pos

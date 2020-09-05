@@ -20,6 +20,8 @@ func init(new_position: Vector2, direction, _enemy: Node2D) -> Gendarme:
 	_init_person(new_position, direction)
 	return self
 
+func handle_collision_with_player() -> void:
+	queue_free()
 
 func _process(delta: float):
 	if (_enemy_node and _enemy_node.is_inside_tree()):
