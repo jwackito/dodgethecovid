@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/art/GUI/default_theme/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/MainGame.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/end_level.png" type="Texture" id=3]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -71,5 +72,37 @@ align = 1
 
 [node name="InterfaceTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="HintTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="HintContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = -96.0
+margin_right = 240.0
+margin_bottom = 96.0
+custom_constants/separation = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HintContainer"]
+margin_right = 480.0
+margin_bottom = 27.0
+grow_vertical = 0
+theme = ExtResource( 1 )
+text = "Nothing label"
+clip_text = true
+
+[node name="Sprite" type="Sprite" parent="HintContainer"]
+position = Vector2( 416.369, 210.833 )
+texture = ExtResource( 3 )
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="item_selected" from="VBoxContainer/DifficultyContainer/Difficulty" to="." method="_on_Difficulty_item_selected"]
+[connection signal="timeout" from="HintTimer" to="." method="_on_HintTimer_timeout"]
