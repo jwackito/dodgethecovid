@@ -4,7 +4,7 @@ extends Person
 
 export var vision_range: int = 1000
 var _enemy_node: Node2D = null
-
+var _is_in_pursuit = false
 
 func _init() -> void:
 	default_sprite_name = "default"
@@ -19,6 +19,5 @@ func init(new_position: Vector2, direction, _enemy: Node2D) -> Police:
 	_init_person(new_position, direction)
 	return self
 
-
-func _process(delta: float):
-	._person_process(delta)
+func handle_collision_with_player() -> void:
+	_is_in_pursuit = false

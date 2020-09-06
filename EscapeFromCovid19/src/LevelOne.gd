@@ -63,8 +63,8 @@ func _on_SpawnEnemyTimer_timeout():
 		  _create_civil(PersonWithoutMaskPackage)
 		"person_visibly_sick":
 		  _create_civil(PersonVisiblySickPackage)
-		#"police":
-		#  _create_militia(PolicePackage)
+		"police":
+		  _create_militia(PolicePackage)
 		"gendarme":
 		  _create_militia(GendarmePackage)
 

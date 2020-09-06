@@ -113,7 +113,7 @@ func _on_Player_body_entered(body):
 		update_life(body)
 	if body.get("type"):
 		process_item(body)
-	if body is Gendarme:
+	if body is Gendarme or body is Police:
 		if permits == 0:
 			position = get_parent().get_parent().start_level_position
 		else:

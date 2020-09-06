@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/LevelOne.gd" type="Script" id=1]
 [ext_resource path="res://scenes/PersonWithMask.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scenes/Permit.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/art/end_level.png" type="Texture" id=17]
+[ext_resource path="res://scenes/Police.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -36,6 +37,7 @@ PersonWithMaskPackage = ExtResource( 2 )
 PersonWithoutMaskPackage = ExtResource( 6 )
 PersonVisiblySickPackage = ExtResource( 7 )
 GendarmePackage = ExtResource( 5 )
+PolicePackage = ExtResource( 18 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
