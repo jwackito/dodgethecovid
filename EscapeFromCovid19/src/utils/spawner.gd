@@ -34,16 +34,19 @@ func _init_items():
 func _init_enemies():
 	entities = {
 		"person_with_mask": {
-			"spawn_percent": 25,
+			"spawn_percent": 20,
 		},
 		"person_without_mask": {
-			"spawn_percent": 25,
+			"spawn_percent": 20,
 		},
 		"person_visibly_sick": {
-			"spawn_percent": 25,
+			"spawn_percent": 20,
 		},
 		"gendarme": {
-			"spawn_percent": 25,
+			"spawn_percent": 20,
+		},
+		"police": {
+			"spawn_percent": 20,
 		},
 	}
 

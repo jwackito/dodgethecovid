@@ -4,7 +4,6 @@
 
 [node name="Person" type="KinematicBody2D"]
 position = Vector2( 374, 104 )
-collision/safe_margin = 0.001
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
