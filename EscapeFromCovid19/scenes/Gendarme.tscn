@@ -43,7 +43,6 @@ max_speed = 200
 vision_range = 200
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 1 )
 
 [node name="AnimatedGesticure" type="AnimatedSprite" parent="."]
