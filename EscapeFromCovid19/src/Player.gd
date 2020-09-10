@@ -11,6 +11,7 @@ signal end_level(covid, mask, permits)
 signal gameover
 signal hit(covid, mask)
 signal permit_update(permits)
+signal egg_hit
 
 
 var screen_size
@@ -105,6 +106,8 @@ func process_item(item):
 	if type == "Permit":
 		permits += 1
 		emit_signal("permit_update", permits)
+	if type == "Egg":
+		emit_signal("egg_hit")
 	if type != "StartLevel":
 			item.queue_free()
 

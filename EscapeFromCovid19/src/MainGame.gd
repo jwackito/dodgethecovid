@@ -90,7 +90,7 @@ func show_hint(label, sprite):
 
 func _on_Start_pressed():
 	level_number += 1
-	level = load("scenes/LevelOne.tscn").instance()
+	level = load("scenes/Level2.tscn").instance()
 	level.connect("level_ended", self, "_on_Level_level_ended")
 	show_hint(level.get_node("ObjectiveLabel"), level.get_node("ObjectiveSprite"))
 	$HintTimer.start()

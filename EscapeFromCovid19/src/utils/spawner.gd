@@ -60,5 +60,8 @@ func take():
 			break
 		else:
 			base += entities[k].spawn_percent
-	assert(chosen != null)
+	#assert(chosen != null)
+	if chosen == null:
+		print("ups")
+		return take()
 	return chosen
