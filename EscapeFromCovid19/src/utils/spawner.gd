@@ -12,41 +12,41 @@ func _init(entity_type):
 		_:
 			printerr("unknow entity type to spawn")
 
-func _init_items():
+func _init_items(mask=25, alcohol=20, hcqs=25, cds=25, permit=5):
 	entities = {
 		"mask": {
-			"spawn_percent": 25,
+			"spawn_percent": mask,
 		},
 		"gel_alcohol": {
-			"spawn_percent": 20,
+			"spawn_percent": alcohol,
 		},
 		"hcqs": {
-			"spawn_percent": 25,
+			"spawn_percent": hcqs,
 		},
 		"cds": {
-			"spawn_percent": 25,
+			"spawn_percent": cds,
 		},
 		"permit": {
-			"spawn_percent": 5,
+			"spawn_percent": permit,
 		},
 	}
 
-func _init_enemies():
+func _init_enemies(person_wmask = 20, person_womask=20, person_sick=20, gendarme=20, police=20):
 	entities = {
 		"person_with_mask": {
-			"spawn_percent": 20,
+			"spawn_percent": person_wmask,
 		},
 		"person_without_mask": {
-			"spawn_percent": 20,
+			"spawn_percent": person_womask,
 		},
 		"person_visibly_sick": {
-			"spawn_percent": 20,
+			"spawn_percent": person_sick,
 		},
 		"gendarme": {
-			"spawn_percent": 20,
+			"spawn_percent": gendarme,
 		},
 		"police": {
-			"spawn_percent": 20,
+			"spawn_percent": police,
 		},
 	}
 
